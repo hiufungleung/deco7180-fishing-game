@@ -9,10 +9,10 @@ body {
     text-align: center;
 }
 
-.map {
-    /* 根據您的需求調整 */
+#map {
     width: 100%;
     height: 80vh;
+    position: relative;  /* 给地图一个相对定位，以便我们可以在其上放置侧边栏 */
 }
 
 .info-sidebar {
