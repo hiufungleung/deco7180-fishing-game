@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.search-bar {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.map {
+    /* 根據您的需求調整 */
+    width: 100%;
+    height: 80vh;
+}
+
+.info-sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.8);
+    /* 根據您的需求調整其他樣式 */
+}
+
+.bottom-right-image {
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    cursor: pointer;
+    /* 根據您的需求調整其他樣式 */
+}
