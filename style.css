@@ -31,3 +31,49 @@ body {
     cursor: pointer;
     /* 根據您的需求調整其他樣式 */
 }
+
+
+
+
+
+
+
+
+
+
+
+/* sidebar_css */
+#sidebar {
+    width: 250px;
+    max-height: 100vh; /* 如果侧边栏内容过多，允许滚动 */
+    background-color: #f4f4f4;
+    position: absolute; /* 使用absolute或者fixed，取决于你的需求 */
+    top: 0;
+    right: 0; /* 把侧边栏移到右边，这样不会遮挡地图 */
+    overflow-y: auto;
+    padding: 20px;
+    z-index: 1000;  /* 确保侧边栏位于地图之上 */
+}
+  
+  /* 地点名称样式 */
+  #location h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* 图片组样式 */
+  #image-group img {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* 天气信息样式 */
+  #weather-info {
+    margin-top: 100px;
+  }
+  
+  #temperature, #weather-condition {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  /* sidebar_css */
