@@ -38,6 +38,29 @@ $(document).ready(function () {
         }
         currentMarker = L.marker(markerCoords, { icon: redIcon }).addTo(map);
         map.setView(markerCoords, 10);
+
+        currentMarker.on('click', function() {
+            // 当标记被点击时执行的操作
+            showSidebar();
+            
+            $.ajax({
+                url: '/getFishFromLocation/Hutt Gully',
+                method: 'GET',
+                success: function(response) {
+                    console.log(response);
+                    // 这里处理返回的数据，例如显示在侧边栏中
+                },
+                error: function(error) {
+                    console.error("Error:", error);
+                }
+            });
+        });
+
+    }
+
+    function showSidebar() {
+        // 使用jQuery更改侧边栏的位置
+        $('#sidebar').css('left', '0%');
     }
 
     // 在页面加载时初始化地图

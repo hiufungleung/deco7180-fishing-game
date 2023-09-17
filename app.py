@@ -1,5 +1,6 @@
 from flask import *
 import requests
+import urllib.request
 app = Flask(__name__, static_folder='.', static_url_path='')
 
 
@@ -28,6 +29,27 @@ def handle_input():
 
     '''presentation only'''
     return jsonify({"lat": -27.4969667, "lng": 153.0402354})
+
+
+@app.route('/getFishFromLocation/<location>', methods=['GET'])
+def get_fish(location):
+    # API 查询
+    url = f"https://data.gov.au/data/api/3/action/datastore_search_sql?sql=SELECT * from \"d950b44e-1f02-46f0-9e59-ca14dd052770\" WHERE \"Location\"='{location}'"
+    print(url)
+    response = requests.get(url)
+
+    # 检查响应是否正常
+    if response.status_code != 200:
+        return jsonify({"error": "Failed to retrieve data from API"}), 500
+
+    data = response.json()
+    # 提取 Fish 字段
+    fish = data['result']['records'][0]['Fish']
+    print(fish)
+
+    return jsonify({"fish": fish})
+
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5500, debug=True)

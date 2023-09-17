@@ -2,27 +2,28 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.search-bar {
-    position: fixed;
-    top: 10px;
-    width: 100%;
-    text-align: center;
+#main_search {
+    position: fixed;  /* 使用fixed以保持元素始终在视口中 */
+    top: 10px;           /* 距离顶部0距离 */
+    left: 50%;        /* 让元素横向处于视口的中间 */
+    transform: translateX(-50%);  /* 微调以确保元素真正出现在中间 */
+    z-index: 1001;    /* 确保搜索栏在其他元素之上，比侧边栏的z-index多1 */
+    width:300px;
+    height: 25px;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+
 }
 
 #map {
     width: 100%;
-    height: 80vh;
+    height: 100vh;
     position: relative;  /* 给地图一个相对定位，以便我们可以在其上放置侧边栏 */
 }
 
-.info-sidebar {
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 300px;
-    background-color: rgba(255, 255, 255, 0.8);
-    /* 根據您的需求調整其他樣式 */
-}
+
 
 .bottom-right-image {
     position: fixed;
@@ -44,12 +45,13 @@ body {
 
 /* sidebar_css */
 #sidebar {
-    width: 250px;
-    height: 100vh; /* 如果侧边栏内容过多，允许滚动 */
-    background-color: #f4f4f4;
-    position: absolute; /* 使用absolute或者fixed，取决于你的需求 */
-    top: 0;
-    left: 0; /* 把侧边栏移到右边，这样不会遮挡地图 */
+    width: 220px;
+    height: auto; /* 如果侧边栏内容过多，允许滚动 */
+    background-color: rgb(0, 221, 255);
+    position: fixed; /* 使用absolute或者fixed，取决于你的需求 */
+    top: 5px;
+    bottom: 5px; /* 把侧边栏移到左边，这样不会遮挡地图 */
+    left:-40%;
     overflow-y: auto;
     padding: 20px;
     z-index: 1000;  /* 确保侧边栏位于地图之上 */
@@ -62,10 +64,25 @@ body {
   }
   
   /* 图片组样式 */
-  #image-group img {
+  #image_spot img {
     width: 100%;
     margin-bottom: 15px;
   }
+
+  #fish-images {
+    display: flex;  /* 使用弹性盒子布局 */
+    flex-wrap: wrap;  /* 允许内容折行 */
+    justify-content: space-between; /* 在每行的图片之间添加一些间隔 */
+    margin-top: 20px; /* 距离上方的间隔 */
+    margin-bottom: 20px; /* 距离下方的间隔 */
+    overflow-y: auto; /* 如果内容过多则允许滚动 */
+    max-height: 200px; /* 最大高度，超过则滚动 */
+  }
+
+  .fish-image {
+    width: calc(50% - 10px); /* 每行两张图片，减去一些间隔 */
+    margin-bottom: 10px; /* 添加底部间隔 */
+}
   
   /* 天气信息样式 */
   #weather-info {
@@ -75,5 +92,21 @@ body {
   #temperature, #weather-condition {
     font-size: 18px;
     margin-bottom: 10px;
+  }
+
+  .play-button-container {
+    position: absolute; /* 相对于侧边栏进行定位 */
+    bottom: 20px; /* 离底部的距离 */
+    width: 100%; /* 容器宽度为侧边栏宽度 */
+    left: 90px; 
+  }
+  
+  .play-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
   /* sidebar_css */
