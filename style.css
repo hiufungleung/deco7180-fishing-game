@@ -54,6 +54,7 @@ body {
   overflow-y: auto;
   padding: 20px;
   z-index: 1000;  /* 确保侧边栏位于地图之上 */
+  text-shadow: 2px 2px white;
 }
 
 #sidebar::before {
