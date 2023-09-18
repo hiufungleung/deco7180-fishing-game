@@ -32,7 +32,7 @@ def handle_input():
 
 
 @app.route('/getFishFromLocation/<location>', methods=['GET'])
-def get_fish(location):
+def get_fishes(location):
     # API 查询
     url = f"https://data.gov.au/data/api/3/action/datastore_search_sql?sql=SELECT * from \"d950b44e-1f02-46f0-9e59-ca14dd052770\" WHERE \"Location\"='{location}'"
     print(url)
@@ -44,10 +44,25 @@ def get_fish(location):
 
     data = response.json()
     # 提取 Fish 字段
-    fish = data['result']['records'][0]['Fish']
-    print(fish)
+    fishes = data['result']['records'][0]['Fish']
+    print(fishes)
 
-    return jsonify({"fish": fish})
+    return jsonify({"fish": fishes})
+
+
+@app.route('/getLocationsFromFish/<fish>', methods=['GET'])
+def get_locations(fish):
+    url = f"https://data.gov.au/data/api/3/action/datastore_search_sql?sql=SELECT * from \"d950b44e-1f02-46f0-9e59-ca14dd052770\" WHERE \"Fish\" LIKE '%{fish}%'"
+    print(url)
+    response = requests.get(url)
+    if response.status_code != 200:
+        return jsonify({"error": "Failed to retrieve data from API"}), 500
+
+    data = response.json()
+    # 提取 Fish 字段
+    locations = [record['Location'] for record in data['result']['records']]
+    print(locations)
+    return jsonify({"Locations": locations})
 
 
 

@@ -97,6 +97,45 @@ $(document).ready(function () {
             });
         }
     });
+
+
+    let currentIndex = 0;
+
+    const images = [
+        { src: 'images/fishes/australian-salmon.png', description: '描述1' },
+        { src: 'images/fishes/snapper.png', description: '描述2' },
+        { src: 'images/fishes/trevally.png', description: '描述3' },
+        { src: 'images/fishes/australian-salmon.png', description: '描述4' },
+        { src: 'images/fishes/snapper.png', description: '描述5' },
+        { src: 'images/fishes/trevally.png', description: '描述6' },
+    ];
+
+    function updateGallery() {
+        document.getElementById('mainImg').src = images[currentIndex].src;
+        document.getElementById('description').textContent = images[currentIndex].description;
+
+        const prevIndex = (currentIndex - 1 + images.length) % images.length;
+        const nextIndex = (currentIndex + 1) % images.length;
+
+        document.getElementById('prevImg').src = images[prevIndex].src;
+        document.getElementById('nextImg').src = images[nextIndex].src;
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateGallery();
+    }
+
+    function previousImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateGallery();
+    }
+
+    document.getElementById('prevButton').addEventListener('click', previousImage);
+    document.getElementById('nextButton').addEventListener('click', nextImage);
+
+    window.addEventListener('load', updateGallery);  // 確保當網頁加載時更新畫廊
+
     // function goToOtherPage() {
     //     window.location.href = "another_page.html";
     // }

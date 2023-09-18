@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -22,50 +22,54 @@
 </head>
 
 <body>
-    <input id="main_search" type="text" placeholder="Enter location or fish">
-    <!-- <div id="response_message"></div> -->
+  <input id="main_search" type="text" placeholder="Enter location or fish">
+  <!-- <div id="response_message"></div> -->
 
-    <div id="map"></div>
+  <div id="map"></div>
 
-    <div id="sidebar">
-        <!-- 地点名称 -->
-        <div id="location">
-          <h2>Gold Coast</h2>
-        </div>
-        
-        <!-- 图片 -->
-        <div id="image_spot">
-          <img src="/images/g.jpg" alt="view">
-        </div>
-        
-        <div id="fish-images">
-          <img src="/images/fishes/australian-salmon.png" alt="Fish 1" class="fish-image">
-          <img src="/images/fishes/snapper.png" alt="Fish 2" class="fish-image">
-          <img src="/images/fishes/trevally.png" alt="Fish 3" class="fish-image">
-        </div>
-
-        <!-- 天气信息 -->
-        <div id="weather-info">
-          <!-- 气温 -->
-          <div id="temperature">
-            <span>25°C</span>
-          </div>
-          
-          <!-- 天气 -->
-          <div id="weather-condition">
-            <span>Sunny</span>
-          </div>
-        </div>
-        <!-- 按钮 -->
-        <div class="play-button-container">
-          <button class="play-button">play</button>
-        </div>
-
+  <div id="sidebar">
+    <!-- 地点名称 -->
+    <div id="location">
+      <h2>Gold Coast</h2>
     </div>
     
-    <!-- <img src="your_link_here" alt="Right bottom image" class="bottom-right-image" onclick="goToOtherPage()"> -->
+    <!-- 图片 -->
+    <div id="image_spot">
+      <img src="/images/g.jpg" alt="view">
+    </div>
+    
+    <div id="fish-images">
+      <img src="/images/fishes/australian-salmon.png" alt="Fish 1" class="fish-image">
+      <img src="/images/fishes/snapper.png" alt="Fish 2" class="fish-image">
+      <img src="/images/fishes/trevally.png" alt="Fish 3" class="fish-image">
+    </div>
+    
+    <div class="weather-n-play">
+      <!-- 天气信息 -->
+      <div>
+        <!-- 气温 -->
+        <div id="temperature">
+          <div style="display: flex; align-items: center;">25°C</div>
+        </div>
+        
+        <!-- 天气 -->
+        <div id="weather-condition">
+          <div style="display: flex; align-items: center;">Sunny</div>
+          <img class="weather-image" src="images/weather-sunny.png" alt="Sunny">
+        </div>
+      </div>
 
-    <script src="scripts.js"></script>
+      <!-- 按钮 -->
+      <div class="play-button-container">
+        <button class="play-button">play</button>
+      </div>
+    </div>
+
+  </div>
+  <a id="fishdex" href="fishdex.html"></a>
+  <!-- <img src="your_link_here" alt="Right bottom image" class="bottom-right-image" onclick="goToOtherPage()"> -->
+
+  <script src="scripts.js"></script>
 </body>
 
 </html>
