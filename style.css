@@ -58,8 +58,8 @@ body {
 
 #sidebar::before {
   content: "";
-  background-image: url('images/fishdex-background.jpg');
-  opacity: 0.9;  /* 調整背景圖片的透明度 */
+  background-image: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.1)),url('images/fishdex-background.jpg');
+  opacity: 0.95;  /* 調整背景圖片的透明度 */
   position: absolute;
   top: 0;
   right: 0;
