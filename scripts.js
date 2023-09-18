@@ -13,22 +13,19 @@ $(document).ready(function () {
     // 初始化地图的函数
     function initializeMap(centerCoords) {
         const zoom = 5;
-        map = L.map('map').setView(centerCoords, zoom);
+        map = L.map('map',{zoomControl: false}).setView(centerCoords, zoom);
         
         const tile = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
             minZoom: 4,
             maxZoom: 18,
             attribution: '©OpenStreetMap, ©CartoDB',
             ext: 'png',
-            zoomControl: true,
         }).addTo(map);
 
         const southWest = L.latLng(-45.0, 108),
             northEast = L.latLng(-9.0, 160.0);
         const bounds = L.latLngBounds(southWest, northEast);
         map.setMaxBounds(bounds);
-
-        const searchBar = L.Control.geocoder({ position: 'topleft' }).addTo(map);
     }
 
     // 设置标记的函数
