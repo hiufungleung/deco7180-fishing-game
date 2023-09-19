@@ -33,6 +33,11 @@ def handle_input():
 
 @app.route('/getFishFromLocation/<location>', methods=['GET'])
 def get_fishes(location):
+    # if image in cache:
+    #       use cache 
+    # else:
+    #       use api
+    #       after use api, add this image to cache 
     # API 查询
     url = f"https://data.gov.au/data/api/3/action/datastore_search_sql?sql=SELECT * from \"d950b44e-1f02-46f0-9e59-ca14dd052770\" WHERE \"Location\"='{location}'"
     print(url)
@@ -67,4 +72,4 @@ def get_locations(fish):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=443, debug=True)
+    app.run(host='0.0.0.0', port=5500, debug=True)
