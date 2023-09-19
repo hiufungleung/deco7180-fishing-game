@@ -28,7 +28,11 @@ def handle_input():
     #     return jsonify({"error": "Unable to get location", "message": "Received input!"}), 400
 
     '''presentation only'''
-    return jsonify({"lat": -27.4969667, "lng": 153.0402354})
+    return jsonify({"lat": -28.016367, "lng": 153.432760})
+
+
+
+
 
 
 @app.route('/getFishFromLocation/<location>', methods=['GET'])
