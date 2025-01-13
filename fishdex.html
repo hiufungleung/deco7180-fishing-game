@@ -2,26 +2,63 @@
 <html lang="en">
 
 <head>
-    <link rel = "stylesheet" href = "style.css"/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishionary - Legendary Angler</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/images/fishing-logo-light-mode.png" id="favicon">
+    <link rel="icon" type="image/png" href="/images/fishing-logo-dark-mode.png" id="favicon-dark"
+        media="(prefers-color-scheme: dark)" disabled>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="fishdex">
-    <a id="returnButton" href="index.html"></a>
-    <div class="gallery-container">
-        <div class="gallery">
-            <div id="prevButton"></div>
-            <div class="image-container">
-                <img id="prevImg" src="images/fishes/snapper.png" alt="Previous Image">
-                <img id="mainImg" src="images/fishes/australian-salmon.png" alt="Current Image">
-                <img id="nextImg" src="images/fishes/trevally.png" alt="Next Image">
+    <div style="display: flex; flex-direction: column; height: 100%;">
+        <div class="return-n-home">
+            <div class="rnh-button-container">
+                <div class="rnh-button" id="return-button"></div>
             </div>
-            <div id="nextButton"></div>
+            <div class="rnh-button-container">
+                <a class="rnh-button" id="home-button" href="index.html"></a>
+            </div>    
         </div>
-        <div class = "description-container" >
-            <div class="description" style="font-size: 20px;"> Arripis (Australia Salmon)</div>
-            <div class="description">Arripis is a genus of marine fishes from Australia and New Zealand, known as Australian salmon, kahawai and Australian herring. They are the only members of the family Arripidae. Despite the common name, Australian salmon are not related to the salmon family Salmonidae of the Northern Hemisphere, just as Australian herring are not related to herring of the Northern Hemisphere, but belong to the order Perciformes of perch-like fishes. Australian salmon were named so by early European settlers after their superficial resemblance to the salmoniform fishes.</div>
+        <div style="display: flex;">
+            <div id="thumbnail-container" style="width:45vw"></div>
+            
+            <div class="gallery-container hidden">
+                <div class="gallery">
+                    <div class="image-container">
+                        <img id="mainImg" src="images/fishes/australian-salmon.png" alt="Current Image">
+                    </div>
+                    <div>
+                        <div id="count-the-fish">
+                            Amount been caught: 0
+                        </div>
+                        <div class="all-spots-btn">
+                            <div id="show-fishing-spots" data-tooltip="tool" ></div>
+                            <div class="tooltip">show all the places have this fish.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description-container">
+                    <div class="description-title" >Arripis (Australia Salmon)</div>
+                    <div class="description" id="fish-description">Arripis is a genus of marine fishes from Australia and New Zealand, known as Australian salmon, kahawai, and Australian herring. They are the only members of the family Arripidae. Despite the common name, Australian salmon are not related to the salmon family Salmonidae of the Northern Hemisphere, just as Australian herring are not related to herring of the Northern Hemisphere, but belong to the order Perciformes of perch-like fishes. Australian salmon were named so by early European settlers after their superficial resemblance to the salmoniform fishes.</div>
+                </div>
+            </div>
+
+            <div id="fishing-spots-popup" class="popup">
+                <div class="popup-content">
+                    <div class="popup-header">
+                        <h2 style="padding-left: 20px;">You Can Found This Fish At...</h2>
+                        <button id="close-popup" class="close-btn">&times;</button>
+                    </div>
+                    <div class="spots-list">
+                    </div>
+                </div>
+            </div>
         </div>
+
+
     </div>
-    <script src="scripts.js"></script>
+    <script src="fishdexScript.js"></script>
 </body>
 </html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="gamecss.css">
+    <link rel="icon" type="image/png" href="/images/fishing-logo-light-mode.png" id="favicon">
+    <link rel="icon" type="image/png" href="/images/fishing-logo-dark-mode.png" id="favicon-dark"
+        media="(prefers-color-scheme: dark)" disabled>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Fishing - Legendary Angler</title>
+</head>
+<body>
+    <div class="return-n-home">
+        <div class="rnh-button-container">
+            <div class="rnh-button" id="return-button"></div>
+        </div>
+        <div class="rnh-button-container">
+            <a class="rnh-button" id="home-button" href="index.html"></a>
+        </div>    
+    </div>
+
+    <div id="guide-container">
+        <div class="guide">
+            <p>Press</p>
+            <div id="cast-press"></div>
+            <p>or click</p>
+            <div id="cast-click"></div>
+            <p>to cast</p>
+        </div>
+        <div class="guide">
+            <p>Press</p>
+            <div id="reel-press"></div>
+            <p>or click</p>
+            <div id="reel-click"></div>
+            <p>to reel</p>
+        </div>
+        <button id="ok-button">OK</button>
+    </div>
+
+
+    <img id="initial-image" src="images/game-initial.png" alt="Initial Image">
+
+    <video class="all-video" id="sunny-cast-start" preload="auto">
+        <source src="gamevideo/sunny-cast-start.mp4" type="video/mp4">
+    </video>
+    <video class="all-video" id="sunny-cast-loop" preload="auto">
+        <source src="gamevideo/sunny-cast-loop.mp4" type="video/mp4">
+    </video>
+    <video class="all-video" id="sunny-reel" preload="auto">
+        <source src="gamevideo/sunny-reel.mp4" type="video/mp4">
+    </video>
+    <video class="all-video" id="rainy-cast-start" preload="auto">
+        <source src="gamevideo/rainy-cast-loop.mp4" type="video/mp4">
+    </video>
+    <video class="all-video" id="rainy-cast-loop" preload="auto">
+        <source src="gamevideo/rainy-cast-start.mp4" type="video/mp4">
+    </video>
+    <video class="all-video" id="rainy-reel" preload="auto">
+        <source src="gamevideo/rainy-reel.mp4" type="video/mp4">
+    </video>
+
+
+    <div class="caught-fish">
+        <div id="total-fish-count">0 Fish Caught!</div>
+
+        <div class="button-container">
+            <div id="cast-button"><img src="images/cast.png" alt="castButton"></div>
+            <div id="reel-button"><img src="images/reel.png" alt="reelButton"></div>
+        </div>
+    </div>
+
+    <div class="play-forbidden" id="message">
+        <p></p>
+    </div>
+
+
+
+    <script src="gameScript.js"></script>
+</body>
+</html>
