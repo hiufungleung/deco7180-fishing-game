@@ -53,11 +53,11 @@ body, html {
 }
 
 #return-button {
-  background-image: url(images/back-black.png);
+  background-image: url(../assets/images/icons/back-black.png);
 }
 
 #home-button {
-  background-image: url(images/home-black.png);
+  background-image: url(../assets/images/icons/home-black.png);
 }
 
 
@@ -100,19 +100,19 @@ body, html {
 }
 
 #cast-press {
-  background-image: url(images/space-key.png);
+  background-image: url(../assets/images/icons/space-key.png);
 }
 
 #cast-click {
-  background-image: url(images/cast.png);
+  background-image: url(../assets/images/icons/cast.png);
 }
 
 #reel-press {
-  background-image: url(images/enter-key.png);
+  background-image: url(../assets/images/icons/enter-key.png);
 }
 
 #reel-click {
-  background-image: url(images/reel.png);
+  background-image: url(../assets/images/icons/reel.png);
 }
 
 

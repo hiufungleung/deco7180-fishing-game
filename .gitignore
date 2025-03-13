@@ -1,4 +1,14 @@
 .vscode/
 __pycache__/
-.DS_Store
 saved_images/
+.idea/
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# OS X
+.DS_Store
+.Spotlight-V100
+.Trashes
+._*

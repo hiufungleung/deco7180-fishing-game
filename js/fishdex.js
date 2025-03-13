@@ -1,81 +1,49 @@
+import fish_descriptions from "./fish_descriptions.js";
+import fish_spots from "./fish_spots.js";
+
 function loadThumbnails() {
-    const thumbnailContainer = $("#thumbnail-container");
+    const thumbnailContainer = document.getElementById("thumbnail-container");
 
-    // Get all fish names
-    $.ajax({
-        url: '/get_fishes_from_location/all',  
-        method: 'GET',
-        success: function (response) {
-            //  Create thumbnail for each fish
-            response.fishes.forEach(function (fishName, index) {
-                const thumbnail = $("<div></div>");
-                thumbnail.addClass("fishdex-thumbnail");
+    Object.keys(fish_spots).forEach((fishName, index) => {
+        const thumbnail = document.createElement("div");
+        thumbnail.classList.add("fishdex-thumbnail");
+        thumbnail.style.backgroundImage = `url(./assets/images/fishes/${fishName}.png)`;
+        thumbnail.dataset.index = index;
 
-                thumbnail.css("backgroundImage", `url(/get_fish_image/${fishName})`);
-                thumbnail.attr("data-index", index);
+        thumbnail.addEventListener("click", () => updateGallery(fishName));
 
-                thumbnail.on("click", function () {
-                    updateGallery(fishName);  
-                });
-
-                thumbnailContainer.append(thumbnail);
-            });
-        },
-        error: function (error) {
-            console.log("Error:", error);
-        }
+        thumbnailContainer.appendChild(thumbnail);
     });
 }
 
 function updateGallery(fishName) {
-    $("#mainImg").attr("src", `/get_fish_image/${fishName}`);
-    
+    document.getElementById("mainImg").src = `./assets/images/fishes/${fishName}.png`;
     const formattedName = formatFishName(fishName);
-    
-    $(".description-title").text(formattedName);
+    document.querySelector(".description-title").textContent = formattedName;
 
-    $.ajax({
-        url: `/get_fish_description/${fishName}`,  
-        method: 'GET',
-        success: function(data) {
-            $("#fish-description").text(data.fish);
-        },
-        error: function (error) {
-            console.log("Error getting description:", error);
-        }
+    document.getElementById("fish-description").textContent = fish_descriptions[fishName] || "No description available.";
+
+    const spotsList = document.querySelector(".spots-list");
+    spotsList.innerHTML = "";
+
+    (fish_spots[fishName] || []).forEach(locationName => {
+        const spotDiv = document.createElement("div");
+        spotDiv.classList.add("spot");
+        spotDiv.textContent = locationName;
+        spotsList.appendChild(spotDiv);
     });
 
-    $.getJSON(`/get_locations_from_fish/${fishName}`, function(data) {
-        const spotsList = $(".spots-list");
-        spotsList.empty();  
-        
-        $.each(data, function(locationName, locationData) {
-            const lat = locationData.lat;
-            const lng = locationData.lng;
-            spotsList.append(`<div class="spot" data-lat="${lat}" data-lng="${lng}">${locationName}</div>`);
-        });
-    });
+    const userFishData = JSON.parse(localStorage.getItem("caught_fishes")) || {};
+    const fishAmount = document.getElementById("count-the-fish");
+    const amount = userFishData[fishName];
+    fishAmount.textContent = amount !== undefined ? `You have caught ${amount} ${formattedName}.` : "You haven't caught this Fish yet!";
 
-    $.getJSON(`/get_user_fish_data`, function(data) {
-        var fishAmount = $("#count-the-fish");
-        let amount = data[fishName];
-        if (amount !== undefined) {
-            fishAmount.text("You have caught " + amount + " " + formattedName + ".");
-        } else {
-            fishAmount.text("You haven't caught this Fish yet!");
-        }
-    });
-
-    $(".gallery-container").removeClass("hidden");
-
-
+    document.querySelector(".gallery-container").classList.remove("hidden");
 }
 
-
-
 function getURLParameter(name) {
-    const result = new RegExp('[\\?&]' + name + '=([^&#]*)').exec(window.location.search);
-    return result ? decodeURIComponent(result[1]) : null;
+    const result = new URLSearchParams(window.location.search).get(name);
+    return result ? decodeURIComponent(result) : null;
 }
 
 const selectedFish = getURLParameter("fish");
@@ -84,41 +52,34 @@ if (selectedFish) {
 }
 
 function formatFishName(fishName) {
-    let formattedName = fishName.replace(/-/g, " ");
-    formattedName = formattedName.replace(/\b\w/g, function(char) {
-        return char.toUpperCase();
-    });
-
-    return formattedName;
+    return fishName.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase());
 }
 
-
-
-$("#return-button").on("click", function() {
+document.getElementById("return-button").addEventListener("click", () => {
     window.history.back();
 });
 
-$(".all-spots-btn").on("click", function() {
-    $("#fishing-spots-popup").show();
+document.querySelector(".all-spots-btn").addEventListener("click", () => {
+    document.getElementById("fishing-spots-popup").style.display = "block";
 });
 
-$("#fishing-spots-popup, #close-popup").on("click", function() {
-    $("#fishing-spots-popup").hide();
+document.getElementById("fishing-spots-popup").addEventListener("click", () => {
+    document.getElementById("fishing-spots-popup").style.display = "none";
 });
 
-$(".popup-content").on("click", function(e) {
+document.getElementById("close-popup").addEventListener("click", () => {
+    document.getElementById("fishing-spots-popup").style.display = "none";
+});
+
+document.querySelector(".popup-content").addEventListener("click", e => {
     e.stopPropagation();
 });
 
-$(".spots-list").on("click", ".spot", function() {
-    const spotName = $(this).text();
-    const lat = $(this).data('lat');
-    const lng = $(this).data('lng');
-    window.location.href = `/index.html?spotName=${spotName}&lat=${lat}&lng=${lng}`;
+document.querySelector(".spots-list").addEventListener("click", e => {
+    if (e.target.classList.contains("spot")) {
+        const spotName = e.target.textContent;
+        window.location.href = `./index.html?spotName=${encodeURIComponent(spotName)}`;
+    }
 });
 
-$(document).ready(function() {
-    loadThumbnails();
-});
-
-
+document.addEventListener("DOMContentLoaded", loadThumbnails);

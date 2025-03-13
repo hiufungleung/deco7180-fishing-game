@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fishionary - Legendary Angler</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="/images/fishing-logo-light-mode.png" id="favicon">
-    <link rel="icon" type="image/png" href="/images/fishing-logo-dark-mode.png" id="favicon-dark"
-        media="(prefers-color-scheme: dark)" disabled>
+    <title>Fishdex - Legendary Angler</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./assets/images/icons/fishing-logo-light-mode.png" id="favicon">
+    <link rel="icon" type="image/png" href="./assets/images/icons/fishing-logo-dark-mode.png" id="favicon-dark"
+          media="(prefers-color-scheme: dark)" disabled>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body class="fishdex">
@@ -18,7 +18,7 @@
                 <div class="rnh-button" id="return-button"></div>
             </div>
             <div class="rnh-button-container">
-                <a class="rnh-button" id="home-button" href="index.html"></a>
+                <a class="rnh-button" id="home-button" href="./"></a>
             </div>    
         </div>
         <div style="display: flex;">
@@ -27,7 +27,7 @@
             <div class="gallery-container hidden">
                 <div class="gallery">
                     <div class="image-container">
-                        <img id="mainImg" src="images/fishes/australian-salmon.png" alt="Current Image">
+                        <img id="mainImg" src="./assets/images/fishes/australian-salmon.png" alt="Current Image">
                     </div>
                     <div>
                         <div id="count-the-fish">
@@ -59,6 +59,6 @@
 
 
     </div>
-    <script src="fishdexScript.js"></script>
+    <script type="module" src="js/fishdex.js"></script>
 </body>
 </html>

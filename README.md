@@ -1,14 +1,6 @@
 # deco7180
 
-# deco7180
 
-# deco7180
-
-# deco7180
-
-# deco7180
-
-# deco7180
 
 weather api:
 https://open-meteo.com/
