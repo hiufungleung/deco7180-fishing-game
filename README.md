@@ -1,8 +1,14 @@
-# deco7180
+# Lengendary Angular
 
-weather api:
+## Description
+A course project in DECO7180 - Design Computing Studio I - Interactive Technology. This is a fishing game, users are able to search for a location to get their fishing spots. If users want to reel a specfic breed, they can directly click on the Fishdex page to get the specific fishing spots.
+
+## APIs
+
+### weather api
 https://open-meteo.com/
 
+### Dataset
 https://data.gov.au/data/api/3/action/datastore_search_sql?sql=SELECT \* from "d950b44e-1f02-46f0-9e59-ca14dd052770"
 
 ### image sources
