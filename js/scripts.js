@@ -271,9 +271,9 @@ initializeMap(center);
 
 const params = getQueryParams();
 if (params.spotName) {
-    const spotInfo = spot_geo[params.spotName]; // 從 spot_geo 取得座標
+    const spotInfo = spot_geo[params.spotName]; // Get the spot information
     if (spotInfo) {
-        const { lat, lng } = spotInfo; // 取得緯度與經度
+        const { lat, lng } = spotInfo; // Get the latitude and longitude
         (async () => {
             await setMarker([lat, lng], params.spotName, map, markers, redIcon);
             fitAllMarkers();
